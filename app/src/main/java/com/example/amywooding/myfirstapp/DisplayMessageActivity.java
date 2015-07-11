@@ -1,6 +1,7 @@
 package com.example.amywooding.myfirstapp;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,15 +20,15 @@ public class DisplayMessageActivity extends AppCompatActivity {
         // Get the message from the intent
         Intent intent = getIntent();
         String message = intent.getStringExtra(MyActivity.EXTRA_MESSAGE);
+        setContentView(R.layout.activity_display_message);
 
         // Create the text view
-        TextView textView = new TextView(this);
-        textView.setTextSize(40);
+        TextView textView = (TextView) findViewById(R.id.my_message);
         textView.setText(message);
 
         // Set the text view as the activity layout
-        setContentView(textView);
-
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
